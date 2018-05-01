@@ -19,7 +19,8 @@ function find_loners(d) {
 	
 	let res = "";
 	let leftover = f-m;
-	res = `Unpaired ${leftover < 0 ? "males" : "females"}: ${leftover < 0 ? -leftover : leftover}`;
+	res = `${leftover < 0 ? -leftover : leftover} unpaired 
+		${leftover < 0 ? "males" : "females"}`;
 	return res;
 }
 
@@ -30,11 +31,12 @@ function lazy_bums(d) {
 (() => {
 	let d = init();
 	console.log(d);
-	console.log(tot_gender(d, "females"));
-	console.log(find_loners(d));
-	console.log(lazy_bums(d));
 	let tot_f = document.getElementById("tot_f");
 	let singles = document.getElementById("singles");
 	let bums = document.getElementById("bums");
+	tot_f.innerHTML = `There were a total of ${tot_gender(d, "females")}
+	females in 1990`;
+	singles.innerHTML = `There were ${find_loners(d)} in 1990`;
+	bums.innerHTML = `${lazy_bums(d)} people were retired in 1990`;
 })();
 
